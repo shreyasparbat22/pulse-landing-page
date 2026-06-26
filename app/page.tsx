@@ -1,4 +1,5 @@
 import { BookDemoButton } from "@/components/book-demo";
+import { PageTracker } from "@/components/page-tracker";
 
 const marqueeItems = [
   "Reformer",
@@ -25,6 +26,7 @@ const integrations = [
 export default function Home() {
   return (
     <>
+      <PageTracker />
       <header className="nav">
         <div className="wrap nav-inner">
           <a href="#" className="logo">

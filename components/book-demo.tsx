@@ -8,11 +8,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
-import {
-  GA_EVENTS,
-  trackEvent,
-  type CtaLocation,
-} from "@/lib/gtag";
+import { trackEvent, type CtaLocation } from "@/lib/analytics";
 
 type BookDemoContextValue = {
   open: (location: CtaLocation) => void;
@@ -34,16 +30,12 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
-  const [lastCtaLocation, setLastCtaLocation] = useState<CtaLocation | null>(
-    null,
-  );
 
   const open = useCallback((location: CtaLocation) => {
-    setLastCtaLocation(location);
     setIsOpen(true);
     setStatus("idle");
     setError("");
-    trackEvent(GA_EVENTS.BOOK_DEMO_CLICK, { cta_location: location });
+    trackEvent("book_demo_click", { cta_location: location });
   }, []);
 
   const close = useCallback(() => {
@@ -78,13 +70,6 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
       }
 
       setStatus("success");
-      if (lastCtaLocation) {
-        trackEvent(GA_EVENTS.DEMO_SIGNUP_COMPLETE, {
-          cta_location: lastCtaLocation,
-        });
-      } else {
-        trackEvent(GA_EVENTS.DEMO_SIGNUP_COMPLETE);
-      }
     } catch {
       setStatus("error");
       setError("Something went wrong. Please try again.");
@@ -110,7 +95,7 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
             {status === "success" ? (
               <div className="modal-success">
                 <h2 id="book-demo-title">You&apos;re on the list</h2>
-                <p>Thanks! We&apos;ll be in touch within 24 hours.</p>
+                <p>Thanks, {studioName}. We&apos;ll be in touch within 24 hours.</p>
                 <button type="button" className="btn btn-primary" onClick={close}>
                   Close
                 </button>
