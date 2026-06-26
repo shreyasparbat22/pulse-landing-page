@@ -110,7 +110,7 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
             {status === "success" ? (
               <div className="modal-success">
                 <h2 id="book-demo-title">You&apos;re on the list</h2>
-                <p>Thanks, {studioName}. We&apos;ll be in touch within 24 hours.</p>
+                <p>Thanks! We&apos;ll be in touch within 24 hours.</p>
                 <button type="button" className="btn btn-primary" onClick={close}>
                   Close
                 </button>
