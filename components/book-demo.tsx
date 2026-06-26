@@ -8,9 +8,14 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import {
+  GA_EVENTS,
+  trackEvent,
+  type CtaLocation,
+} from "@/lib/gtag";
 
 type BookDemoContextValue = {
-  open: () => void;
+  open: (location: CtaLocation) => void;
 };
 
 const BookDemoContext = createContext<BookDemoContextValue | null>(null);
@@ -29,11 +34,16 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const [lastCtaLocation, setLastCtaLocation] = useState<CtaLocation | null>(
+    null,
+  );
 
-  const open = useCallback(() => {
+  const open = useCallback((location: CtaLocation) => {
+    setLastCtaLocation(location);
     setIsOpen(true);
     setStatus("idle");
     setError("");
+    trackEvent(GA_EVENTS.BOOK_DEMO_CLICK, { cta_location: location });
   }, []);
 
   const close = useCallback(() => {
@@ -68,6 +78,13 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
       }
 
       setStatus("success");
+      if (lastCtaLocation) {
+        trackEvent(GA_EVENTS.DEMO_SIGNUP_COMPLETE, {
+          cta_location: lastCtaLocation,
+        });
+      } else {
+        trackEvent(GA_EVENTS.DEMO_SIGNUP_COMPLETE);
+      }
     } catch {
       setStatus("error");
       setError("Something went wrong. Please try again.");
@@ -149,15 +166,17 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
 
 export function BookDemoButton({
   className,
+  location,
   children = "Book a Demo",
 }: {
   className?: string;
+  location: CtaLocation;
   children?: ReactNode;
 }) {
   const { open } = useBookDemo();
 
   return (
-    <button type="button" className={className} onClick={open}>
+    <button type="button" className={className} onClick={() => open(location)}>
       {children}
     </button>
   );

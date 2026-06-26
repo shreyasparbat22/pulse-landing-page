@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Analytics } from "@/components/analytics";
 import { BookDemoProvider } from "@/components/book-demo";
+import { CookieConsentProvider } from "@/components/cookie-consent";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en-GB">
       <body>
-        <BookDemoProvider>{children}</BookDemoProvider>
+        <CookieConsentProvider>
+          <BookDemoProvider>{children}</BookDemoProvider>
+          <Analytics />
+        </CookieConsentProvider>
       </body>
     </html>
   );

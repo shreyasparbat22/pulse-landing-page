@@ -33,7 +33,7 @@ export default function Home() {
           </a>
           <div className="nav-spacer" />
           <div className="nav-cta">
-            <BookDemoButton className="btn btn-primary" />
+            <BookDemoButton className="btn btn-primary" location="nav" />
           </div>
         </div>
       </header>
@@ -48,7 +48,7 @@ export default function Home() {
             Pulse is an always-on agent that retains every member, fills every class, and answers every enquiry — working through WhatsApp, on top of the software you already use. You get your week back.
           </p>
           <div className="cta-row">
-            <BookDemoButton className="btn btn-primary" />
+            <BookDemoButton className="btn btn-primary" location="hero" />
           </div>
 
           <div className="collage">
@@ -355,7 +355,7 @@ export default function Home() {
             See what Pulse would do for your studio in a 20-minute walkthrough — built by someone who&apos;s run and exited a studio, for owners who still do.
           </p>
           <div className="cta-row">
-            <BookDemoButton className="btn btn-primary" />
+            <BookDemoButton className="btn btn-primary" location="final" />
           </div>
         </div>
       </section>

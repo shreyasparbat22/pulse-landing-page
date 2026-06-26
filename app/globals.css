@@ -304,14 +304,33 @@ footer{
 .modal-success p{color:var(--ink-soft);margin:12px 0 24px;font-size:15px}
 .modal-success .btn{width:100%}
 
+/* ---------- cookie consent ---------- */
+.cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:16px 28px;
+  background:var(--card);border-top:1px solid var(--line);
+  box-shadow:0 -8px 24px -12px rgba(60,40,25,.20);
+}
+.cookie-banner p{
+  flex:1;min-width:200px;
+  font-size:14px;color:var(--ink-soft);line-height:1.45;margin:0;
+}
+.cookie-banner-actions{
+  display:flex;gap:10px;flex-shrink:0;
+}
+
 /* ---------- responsive ---------- */
 @media(max-width:920px){
   .nav-links{display:none}
   .burger{display:flex}
-  .collage{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}
-  .t-reformer,.t-yoga,.t-barre,.t-hot,.t-spin{grid-column:span 1;grid-row:span 1}
-  .t-reformer{grid-column:span 2;grid-row:span 2}
-  .phone-float{display:none}
+  .collage{
+    display:flex;justify-content:center;margin-top:40px;
+  }
+  .collage .tile{display:none}
+  .phone-float{
+    grid-column:unset;grid-row:unset;width:min(100%,380px);
+  }
   .pillar-grid,.qgrid,.sec-grid{grid-template-columns:1fr}
   .story-card{grid-template-columns:1fr}
 }
