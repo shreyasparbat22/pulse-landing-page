@@ -20,22 +20,20 @@ function getClient(): Client {
 
 async function ensureSchema() {
   const db = getClient();
+
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS demo_signups (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      studio_name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+    )
+  `);
+
   const tableInfo = await db.execute(`PRAGMA table_info(demo_signups)`);
   const columns = tableInfo.rows.map((row) => String(row.name));
 
-  if (columns.length === 0) {
-    await db.execute(`
-      CREATE TABLE demo_signups (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        studio_name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
-      )
-    `);
-    return;
-  }
-
-  if (!columns.includes("studio_name")) {
+  if (columns.length > 0 && !columns.includes("studio_name")) {
     await db.batch([
       { sql: `ALTER TABLE demo_signups RENAME TO demo_signups_legacy` },
       {
