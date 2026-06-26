@@ -1,3 +1,5 @@
+import { BookDemoButton } from "@/components/book-demo";
+
 const marqueeItems = [
   "Reformer",
   "Mat Pilates",
@@ -23,102 +25,15 @@ const integrations = [
 export default function Home() {
   return (
     <>
-      <div className="announce">
-        <a href="#">
-          <span className="pill">NEW</span>
-          Pulse is now onboarding its first cohort of London Pilates studios
-          <span className="arrow">→</span>
-        </a>
-      </div>
-
       <header className="nav">
         <div className="wrap nav-inner">
           <a href="#" className="logo">
             <span className="dot" />
             Pulse
           </a>
-          <nav className="nav-links">
-            <div className="item">
-              Product <span className="caret">▾</span>
-              <div className="dd">
-                <div className="dd-group">
-                  <div className="dd-label">Retain</div>
-                  <a href="#">
-                    <b>Churn Shield</b>
-                    <span>Catch at-risk members before they go quiet</span>
-                  </a>
-                  <a href="#">
-                    <b>ClassPass Converter</b>
-                    <span>Turn drop-in visitors into members</span>
-                  </a>
-                  <a href="#">
-                    <b>Renewal Manager</b>
-                    <span>Save renewals before the card charges</span>
-                  </a>
-                </div>
-                <div className="dd-group">
-                  <div className="dd-label">Fill</div>
-                  <a href="#">
-                    <b>Capacity Optimiser</b>
-                    <span>Fill under-booked classes automatically</span>
-                  </a>
-                  <a href="#">
-                    <b>Waitlist Automator</b>
-                    <span>Backfill every cancellation, hands-free</span>
-                  </a>
-                </div>
-                <div className="dd-group">
-                  <div className="dd-label">Know</div>
-                  <a href="#">
-                    <b>Pre-Class Member Brief</b>
-                    <span>Every instructor walks in informed</span>
-                  </a>
-                  <a href="#">
-                    <b>Weekly Business Digest</b>
-                    <span>MRR, churn and fill rates every Sunday</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              Industries <span className="caret">▾</span>
-              <div className="dd">
-                <div className="dd-group">
-                  <a href="#">
-                    <b>Pilates &amp; Reformer</b>
-                    <span>46% of new studio openings</span>
-                  </a>
-                  <a href="#">
-                    <b>Yoga &amp; Hot Yoga</b>
-                    <span>High-frequency, high-retention</span>
-                  </a>
-                  <a href="#">
-                    <b>Barre &amp; Sculpt</b>
-                    <span>Boutique formats, loyal members</span>
-                  </a>
-                  <a href="#">
-                    <b>Strength &amp; HIIT</b>
-                    <span>Capacity-led, class-pack driven</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="item">How it works</div>
-            <div className="item">Pricing</div>
-          </nav>
           <div className="nav-spacer" />
           <div className="nav-cta">
-            <a href="#" className="login">
-              Log in
-            </a>
-            <a href="#book" className="btn btn-primary">
-              Book a Demo
-            </a>
-          </div>
-          <div className="burger">
-            <span />
-            <span />
-            <span />
+            <BookDemoButton className="btn btn-primary" />
           </div>
         </div>
       </header>
@@ -127,18 +42,13 @@ export default function Home() {
         <div className="wrap">
           <div className="eyebrow">The AI operating layer for studios</div>
           <h1>
-            Your studio runs itself <em>while you teach</em>
+            Your fitness studio runs itself <em>while you teach</em>
           </h1>
           <p className="sub">
             Pulse is an always-on agent that retains every member, fills every class, and answers every enquiry — working through WhatsApp, on top of the software you already use. You get your week back.
           </p>
           <div className="cta-row">
-            <a href="#book" className="btn btn-primary">
-              Book a Demo
-            </a>
-            <a href="#how" className="btn btn-ghost">
-              See how it works
-            </a>
+            <BookDemoButton className="btn btn-primary" />
           </div>
 
           <div className="collage">
@@ -269,9 +179,6 @@ export default function Home() {
                 <span className="n">1</span>
                 <span className="l">retained member a month pays for Pulse</span>
               </div>
-              <a href="#" className="more">
-                Learn more →
-              </a>
             </div>
 
             <div className="pcard">
@@ -293,9 +200,6 @@ export default function Home() {
                 <span className="n">60%</span>
                 <span className="l">fill threshold, fully configurable</span>
               </div>
-              <a href="#" className="more">
-                Learn more →
-              </a>
             </div>
 
             <div className="pcard">
@@ -321,9 +225,6 @@ export default function Home() {
                 <span className="n">0</span>
                 <span className="l">apps for instructors to learn</span>
               </div>
-              <a href="#" className="more">
-                Learn more →
-              </a>
             </div>
           </div>
         </div>
@@ -406,65 +307,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="quotes">
-        <div className="wrap">
-          <div className="head">
-            <div>
-              <div className="eyebrow">From the people who run studios</div>
-              <h2>Built around the studio owner&apos;s week</h2>
-            </div>
-            <small>Sample voices — illustrative of the operator Pulse is built for, not live customers.</small>
-          </div>
-          <div className="qgrid">
-            <div className="qcard">
-              <div className="mark">&quot;</div>
-              <p>
-                The bit I never have time for is the quiet members. By the time I notice someone&apos;s gone, they&apos;ve already cancelled. Something that catches that for me is the whole game.
-              </p>
-              <div className="who">
-                <div className="av" style={{ background: "var(--terracotta)" }}>
-                  SO
-                </div>
-                <div>
-                  <b>Studio owner</b>
-                  <span>Reformer Pilates · North London</span>
-                </div>
-              </div>
-            </div>
-            <div className="qcard">
-              <div className="mark">&quot;</div>
-              <p>
-                My instructors are brilliant in the room but everything they know about a member lives in their head. When one leaves, it&apos;s gone. A brief before every class would change how the floor runs.
-              </p>
-              <div className="who">
-                <div className="av" style={{ background: "var(--sage)" }}>
-                  SM
-                </div>
-                <div>
-                  <b>Studio manager</b>
-                  <span>Yoga &amp; Barre · South East London</span>
-                </div>
-              </div>
-            </div>
-            <div className="qcard">
-              <div className="mark">&quot;</div>
-              <p>
-                ClassPass sends people through the door and then I just… lose them. Closing that loop without me chasing every visitor is worth real money each month.
-              </p>
-              <div className="who">
-                <div className="av" style={{ background: "var(--gold)" }}>
-                  FO
-                </div>
-                <div>
-                  <b>Founder</b>
-                  <span>Boutique Pilates · Zone 1</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="security">
         <div className="wrap">
           <div className="head">
@@ -513,65 +355,13 @@ export default function Home() {
             See what Pulse would do for your studio in a 20-minute walkthrough — built by someone who&apos;s run and exited a studio, for owners who still do.
           </p>
           <div className="cta-row">
-            <a href="#" className="btn btn-primary">
-              Book a Demo
-            </a>
-            <a href="#" className="btn btn-dark">
-              Talk to Pulse on WhatsApp
-            </a>
+            <BookDemoButton className="btn btn-primary" />
           </div>
         </div>
       </section>
 
       <footer>
-        <div className="wrap">
-          <div className="foot-top">
-            <div className="foot-brand">
-              <a href="#" className="logo">
-                <span className="dot" />
-                Pulse
-              </a>
-              <p>The AI operating layer for independent fitness studios.</p>
-              <a href="#" className="mail">
-                hello@pulsestudio.ai
-              </a>
-            </div>
-            <div className="fcol">
-              <h4>Product</h4>
-              <a href="#">Churn Shield</a>
-              <a href="#">Capacity Optimiser</a>
-              <a href="#">ClassPass Converter</a>
-              <a href="#">Member Brief</a>
-              <a href="#">Weekly Digest</a>
-            </div>
-            <div className="fcol">
-              <h4>Studios</h4>
-              <a href="#">Pilates &amp; Reformer</a>
-              <a href="#">Yoga &amp; Hot Yoga</a>
-              <a href="#">Barre &amp; Sculpt</a>
-              <a href="#">Strength &amp; HIIT</a>
-              <a href="#">Pricing</a>
-            </div>
-            <div className="fcol">
-              <h4>Company</h4>
-              <a href="#">How it works</a>
-              <a href="#">Book a Demo</a>
-              <a href="#">For partners</a>
-              <a href="#">Privacy</a>
-            </div>
-          </div>
-          <div className="foot-bot">
-            <span className="c">© 2026 Pulse · Made in London</span>
-            <div className="soc">
-              <a href="#">LinkedIn</a>
-              <a href="#">Instagram</a>
-              <a href="#">X</a>
-            </div>
-          </div>
-        </div>
-        <div className="disclaimer">
-          Concept mockup. Pulse is a pre-launch product brief; studio names, quotes, statistics and the case study shown are illustrative and do not represent live customers. Layout pattern adapted from a home-services AI reference site.
-        </div>
+        <div className="foot-wordmark">PULSE</div>
       </footer>
     </>
   );

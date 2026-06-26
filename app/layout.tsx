@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookDemoProvider } from "@/components/book-demo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB">
-      <body>{children}</body>
+      <body>
+        <BookDemoProvider>{children}</BookDemoProvider>
+      </body>
     </html>
   );
 }
