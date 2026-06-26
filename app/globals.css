@@ -293,18 +293,10 @@ footer{
   padding:12px 14px;border:1px solid var(--line);border-radius:12px;
   background:var(--cream);color:var(--ink);
 }
-.modal-form input:focus,
-.modal-form select:focus{
+.modal-form input:focus{
   outline:none;border-color:var(--terracotta);
   box-shadow:0 0 0 3px rgba(200,85,61,.15);
 }
-.phone-row{display:flex;gap:10px}
-.phone-row select{
-  flex:1;min-width:0;max-width:58%;font:inherit;font-size:14px;font-weight:400;
-  padding:12px 10px;border:1px solid var(--line);border-radius:12px;
-  background:var(--cream);color:var(--ink);
-}
-.phone-row input{flex:1;min-width:0}
 .modal-error{color:var(--terracotta-dk);font-size:13.5px;margin:0}
 .modal-submit{width:100%;margin-top:4px}
 .modal-submit:disabled{opacity:.7;cursor:not-allowed}

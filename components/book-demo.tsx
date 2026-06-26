@@ -1,12 +1,6 @@
 "use client";
 
 import {
-  COUNTRIES,
-  DEFAULT_COUNTRY_ISO2,
-  formatCountryOption,
-  getCountryByIso2,
-} from "@/lib/countries";
-import {
   createContext,
   useCallback,
   useContext,
@@ -31,9 +25,8 @@ function useBookDemo() {
 
 export function BookDemoProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [name, setName] = useState("");
-  const [countryIso, setCountryIso] = useState(DEFAULT_COUNTRY_ISO2);
-  const [whatsapp, setWhatsapp] = useState("");
+  const [studioName, setStudioName] = useState("");
+  const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -45,9 +38,8 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
 
   const close = useCallback(() => {
     setIsOpen(false);
-    setName("");
-    setCountryIso(DEFAULT_COUNTRY_ISO2);
-    setWhatsapp("");
+    setStudioName("");
+    setEmail("");
     setStatus("idle");
     setError("");
   }, []);
@@ -57,22 +49,13 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
     setStatus("loading");
     setError("");
 
-    const country = getCountryByIso2(countryIso);
-    if (!country) {
-      setStatus("error");
-      setError("Please select a valid country.");
-      return;
-    }
-
     try {
       const response = await fetch("/api/book-demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name.trim(),
-          countryIso,
-          countryCode: country.dialCode,
-          whatsapp: whatsapp.trim(),
+          studioName: studioName.trim(),
+          email: email.trim(),
         }),
       });
 
@@ -110,7 +93,7 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
             {status === "success" ? (
               <div className="modal-success">
                 <h2 id="book-demo-title">You&apos;re on the list</h2>
-                <p>Thanks, {name}. We&apos;ll reach out on WhatsApp shortly.</p>
+                <p>Thanks, {studioName}. We&apos;ll be in touch within 24 hours.</p>
                 <button type="button" className="btn btn-primary" onClick={close}>
                   Close
                 </button>
@@ -119,46 +102,32 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
               <>
                 <h2 id="book-demo-title">Book a demo</h2>
                 <p className="modal-sub">
-                  Leave your name and WhatsApp number — we&apos;ll be in touch within 24 hours.
+                  Leave your studio name and email — we&apos;ll be in touch within 24 hours.
                 </p>
                 <form onSubmit={submit} className="modal-form">
                   <label>
-                    Name
+                    Studio name
                     <input
                       type="text"
-                      name="name"
-                      value={name}
-                      onChange={(event) => setName(event.target.value)}
-                      placeholder="Your name"
+                      name="studioName"
+                      value={studioName}
+                      onChange={(event) => setStudioName(event.target.value)}
+                      placeholder="Your studio name"
                       required
-                      autoComplete="name"
+                      autoComplete="organization"
                     />
                   </label>
                   <label>
-                    WhatsApp number
-                    <div className="phone-row">
-                      <select
-                        name="country"
-                        value={countryIso}
-                        onChange={(event) => setCountryIso(event.target.value)}
-                        aria-label="Country"
-                      >
-                        {COUNTRIES.map((country) => (
-                          <option key={country.iso2} value={country.iso2}>
-                            {formatCountryOption(country)}
-                          </option>
-                        ))}
-                      </select>
-                      <input
-                        type="tel"
-                        name="whatsapp"
-                        value={whatsapp}
-                        onChange={(event) => setWhatsapp(event.target.value)}
-                        placeholder="7700 900000"
-                        required
-                        autoComplete="tel-national"
-                      />
-                    </div>
+                    Email
+                    <input
+                      type="email"
+                      name="email"
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      placeholder="you@yourstudio.com"
+                      required
+                      autoComplete="email"
+                    />
                   </label>
                   {error ? <p className="modal-error">{error}</p> : null}
                   <button
