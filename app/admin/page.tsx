@@ -9,7 +9,7 @@ import {
 } from "@/lib/admin-auth";
 
 export const metadata: Metadata = {
-  title: "Pulse Analytics",
+  title: "Sam Analytics",
   robots: { index: false, follow: false },
 };
 

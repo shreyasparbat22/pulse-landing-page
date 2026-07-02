@@ -3,9 +3,9 @@ import { BookDemoProvider } from "@/components/book-demo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pulse | The AI Operating Layer for Independent Fitness Studios",
+  title: "Sam | The AI Operating Layer for Independent Fitness Studios",
   description:
-    "An always-on agent that retains every member, fills every class, and gives studio owners their week back. WhatsApp-first, built for independent boutique studios.",
+    "Sam is an always-on AI that retains every member, fills every class, and gives studio owners their week back. WhatsApp-first, built for independent boutique studios.",
 };
 
 export default function RootLayout({

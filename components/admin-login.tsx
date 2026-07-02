@@ -39,7 +39,7 @@ export function AdminLogin() {
       <div className="wrap admin-inner">
         <div className="admin-login">
           <p className="admin-eyebrow">Internal</p>
-          <h1>Pulse Analytics</h1>
+          <h1>Sam Analytics</h1>
           <p className="admin-login-sub">Enter the admin password to view metrics.</p>
           <form onSubmit={submit} className="admin-login-form">
             <label>

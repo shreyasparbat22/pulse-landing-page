@@ -72,7 +72,7 @@ export async function AdminDashboard() {
         <header className="admin-header">
           <div>
             <p className="admin-eyebrow">Internal</p>
-            <h1>Pulse Analytics</h1>
+            <h1>Sam Analytics</h1>
           </div>
           <div className="admin-header-meta">
             <span>Last 30 days</span>
